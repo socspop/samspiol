@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsepiol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Fuente tipo arcade -->
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden; /* Evitar el desbordamiento */
+            position: relative; /* Posición relativa para el fondo de partículas */
+            font-family: 'Press Start 2P', cursive; /* Cambiar la fuente */
+            background-color: black; /* Mantener fondo negro */
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Asegurarse de que el fondo de partículas esté detrás */
+        }
+
+        .giphy-embed {
+            margin-bottom: 50px;
+            z-index: 1; /* Asegurarse de que el GIF esté encima */
+        }
+
+        .hacker-text {
+            font-size: 5rem; /* Aumentar tamaño del texto */
+            letter-spacing: 2px; /* Espaciado entre letras */
+            text-align: center;
+            color: #c300ff; /* Color del texto */
+            animation: glow 1s infinite alternate, slide-in 0.5s ease forwards; /* Efectos de animación */
+            margin-bottom: 20px; /* Espacio debajo del texto */
+            opacity: 0; /* Inicialmente oculto */
+            animation-delay: 0.5s; /* Retraso antes de comenzar la animación */
+            position: relative; /* Asegurarse de que el texto esté encima */
+            z-index: 1; /* Asegurarse de que el texto esté encima */
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #002fff; }
+            100% { text-shadow: 0 0 20px #0077ff, 0 0 30px #1100ff; }
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(-50px); /* Movimiento hacia arriba */
+                opacity: 0; /* Comienza invisible */
+            }
+            to {
+                transform: translateY(0); /* Posición original */
+                opacity: 1; /* Se vuelve visible */
+            }
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Espaciado entre íconos */
+            z-index: 1; /* Asegurarse de que los íconos estén encima */
+        }
+
+        .icons a {
+            color: white;
+            font-size: 3rem;
+            text-decoration: none;
+        }
+
+        .icons a:hover {
+            color: grey;
+        }
+
+        .icons img {
+            width: 40px; /* Ajusta el tamaño del ícono de Telegram aquí */
+            height: 40px;
+        }
+
+        .pwned {
+            position: absolute;
+            font-size: 5rem; /* Tamaño de letra */
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff00cc, #3333ff); /* Degradado de color */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            animation: fade 1s ease-in-out infinite, float 3s ease-in-out infinite;
+        }
+
+        @keyframes fade {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- Biblioteca de partículas -->
+</head>
+<body>
+
+    <!-- Div para partículas -->
+    <div id="particles-js"></div>
+
+    <!-- Texto "Samsepiol" -->
+    <div class="hacker-text">Samsepiol</div>
+    
+    <!-- GIF centrado -->
+    <iframe src="https://giphy.com/embed/xTiTnBELA6Mb1TeeOc" width="412" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    
+    <!-- Iconos de GitHub, Telegram e ícono personalizado debajo del GIF -->
+    <div class="icons">
+
+
+        <a href="https://t.me/luijait" target="_blank" title="Telegram">
+            <img src="IMAGES/telegram.png" alt="Icono de Telegram">
+        </a>
+
+        <!-- Ícono personalizado que dirige al perfil de GitHub -->
+        <a href="https://github.com/socspop" target="_blank" title="Icono Personalizado">
+            <img src="IMAGES/ICON.png" alt="Icono Personalizado">
+        </a>
+    </div>
+
+    <!-- Letras "pwned" que aparecen por toda la página -->
+    <script>
+        function createPwned() {
+            const pwned = document.createElement('div');
+            pwned.classList.add('pwned');
+            pwned.innerText = 'pwned';
+
+            // Posición aleatoria
+            pwned.style.top = Math.random() * 100 + 'vh';
+            pwned.style.left = Math.random() * 100 + 'vw';
+
+            document.body.appendChild(pwned);
+
+            // Anima la aparición y desaparición
+            setTimeout(() => {
+                pwned.remove();
+            }, 3000); // Mantiene la palabra "pwned" durante 3 segundos
+        }
+
+        // Genera letras "pwned" cada 800 ms
+        setInterval(createPwned, 800);
+    </script>
+
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 100, // Número de partículas
+                    density: {
+                        enable: true,
+                        value_area: 800 // Área de densidad de partículas
+                    }
+                },
+                color: {
+                    value: "#0000ff" // Color de las partículas (rojo)
+                },
+                shape: {
+                    type: "circle", // Forma de las partículas
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    },
+                    image: {
+                        src: "img/github.svg",
+                        width: 100,
+                        height: 100
+                    }
+                },
+                opacity: {
+                    value: 0.5, // Opacidad de las partículas
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 5, // Tamaño de las partículas
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150, // Distancia para la conexión de líneas
+                    color: "#ffffff", // Color de las líneas de conexión
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6, // Velocidad de movimiento de partículas
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse" // Efecto de repulsión al pasar el mouse
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push" // Efecto de agregar partículas al hacer clic
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true // Detectar pantalla retina
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
